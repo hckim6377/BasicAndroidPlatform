@@ -1,5 +1,6 @@
 package com.example.bap.app;
 
+import java.util.ArrayList;
 import java.util.Locale;
 
 import android.app.Activity;
@@ -42,6 +43,11 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
      */
     ViewPager mViewPager;
 
+    private ArrayList<Fragment> mFragments;
+    private static final String LIST = ItemFragment.class.getName();
+    private static final String PLUSONE = PlusOneFragment.class.getName();
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,9 +75,16 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
         final ActionBar actionBar = getActionBar();
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 
+
+        // Add Fragments to Fragments Array
+        mFragments = new ArrayList<Fragment>();
+        mFragments.add( Fragment.instantiate(this, LIST));
+        mFragments.add( Fragment.instantiate(this, PLUSONE));
+        mFragments.add( Fragment.instantiate(this, LIST));
+
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
-        mSectionsPagerAdapter = new SectionsPagerAdapter(getFragmentManager());
+        mSectionsPagerAdapter = new SectionsPagerAdapter(getFragmentManager(), mFragments);
 
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.pager);
@@ -141,25 +154,34 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
      */
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
-        public SectionsPagerAdapter(FragmentManager fm) {
+        // Tab name definition
+        private ArrayList<Fragment> mFragments;
+        private String[] titles = new String[] {"TAB1","TAB2","TAB3"};
+        private int mCount = titles.length;
+
+        public SectionsPagerAdapter(FragmentManager fm, ArrayList<Fragment> f) {
             super(fm);
+            mFragments = f;
         }
 
         @Override
         public Fragment getItem(int position) {
             // getItem is called to instantiate the fragment for the given page.
             // Return a PlaceholderFragment (defined as a static inner class below).
-            return PlaceholderFragment.newInstance(position + 1);
+            //return PlaceholderFragment.newInstance(position + 1);
+            return mFragments.get(position);
         }
 
         @Override
         public int getCount() {
             // Show 3 total pages.
-            return 3;
+            //return 3;
+            return mCount;
         }
 
         @Override
         public CharSequence getPageTitle(int position) {
+            /*
             Locale l = Locale.getDefault();
             switch (position) {
                 case 0:
@@ -170,6 +192,9 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
                     return getString(R.string.title_section3).toUpperCase(l);
             }
             return null;
+            */
+
+            return titles[position];
         }
     }
 

@@ -20,5 +20,6 @@ TBD.
 
 ## Building BasicAndroidPlatform
 
-Clone this git to your local directory and open with Android Studio.
+Clone this git to your local directory and open bap directory with Android Studio.
+You need to change ANDROID SDK directory in local.properties file.
 
