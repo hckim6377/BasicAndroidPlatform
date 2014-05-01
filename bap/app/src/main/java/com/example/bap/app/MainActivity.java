@@ -22,7 +22,8 @@ import android.widget.TextView;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 
-
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
 
 public class MainActivity extends FragmentActivity implements ActionBar.TabListener {
 
@@ -52,6 +53,16 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
         AdRequest adRequest = new AdRequest.Builder()
                 .build();
         adView.loadAd(adRequest);
+
+
+        //Send tracker to Google Analytics.
+        Tracker t = ((BasicAndroidPlatform) getApplication()).getTracker(BasicAndroidPlatform.TrackerName.APP_TRACKER);
+
+        //Set Screen Name
+        t.setScreenName("MainActivity");
+
+        //Send a screen view.
+        t.send(new HitBuilders.AppViewBuilder().build());
 
 
         // Set up the action bar.
@@ -194,5 +205,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
             return rootView;
         }
     }
+
+
 
 }
