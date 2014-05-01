@@ -46,6 +46,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
     private ArrayList<Fragment> mFragments;
     private static final String LIST = ItemFragment.class.getName();
     private static final String PLUSONE = PlusOneFragment.class.getName();
+    private static final String SOCIAL = SocialFragment.class.getName();
 
 
     @Override
@@ -80,7 +81,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
         mFragments = new ArrayList<Fragment>();
         mFragments.add( Fragment.instantiate(this, LIST));
         mFragments.add( Fragment.instantiate(this, PLUSONE));
-        mFragments.add( Fragment.instantiate(this, LIST));
+        mFragments.add( Fragment.instantiate(this, SOCIAL));
 
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
@@ -156,7 +157,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 
         // Tab name definition
         private ArrayList<Fragment> mFragments;
-        private String[] titles = new String[] {"TAB1","TAB2","TAB3"};
+        private String[] titles = new String[] {"LIST","PLUSONE","SOCIAL"};
         private int mCount = titles.length;
 
         public SectionsPagerAdapter(FragmentManager fm, ArrayList<Fragment> f) {

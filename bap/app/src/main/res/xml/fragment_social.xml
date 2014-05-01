@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+  
+        <Preference
+            android:key="share"
+            android:icon="@android:drawable/ic_menu_share"
+            android:title="Share"
+            android:summary="Share BAP with friends"/>
+        
+        <Preference
+            android:key="facebook"
+            android:icon="@drawable/ic_facebook"
+            android:title="FaceBook RingTube Page"
+            android:summary="www.facebook.com/ringtube"/>
+        
+        <Preference
+            android:key="ringtonemaker"
+            android:icon="@drawable/ic_ring"
+            android:title="RingTone Maker"
+            android:summary="Best Ringtone Maker for RingTube"/>
+        
+        <Preference
+            android:key="jumpdolphin"
+            android:icon="@drawable/ic_jump"
+            android:title="Jump Dolphin"
+            android:summary="World's hardest game ever!!"/>
+        
+        <Preference
+            android:key="weather"
+            android:icon="@drawable/ic_weather"
+            android:title="Local Weather"
+            android:summary="Best Korean Weather app ever!!"/>
+
+</PreferenceScreen>
