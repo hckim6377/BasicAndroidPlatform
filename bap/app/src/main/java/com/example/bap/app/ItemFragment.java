@@ -8,6 +8,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
 
 import java.util.ArrayList;
 
@@ -37,6 +39,16 @@ public class ItemFragment extends ListFragment {
         item.add("Item 1");
         item.add("Item 2");
         item.add("Item 3");
+
+        //Send tracker to Google Analytics.
+        Tracker t = ((BasicAndroidPlatform) getActivity().getApplication()).getTracker(BasicAndroidPlatform.TrackerName.APP_TRACKER);
+
+        //Set Screen Name
+        t.setScreenName("com.example.bap.app.ItemFragment");
+
+        //Send a screen view.
+        t.send(new HitBuilders.AppViewBuilder().build());
+
 
         // TODO: Change Adapter to display your content
         setListAdapter(new ArrayAdapter<String>(getActivity(),

@@ -18,7 +18,7 @@ import com.google.android.gms.plus.PlusOneButton;
 public class PlusOneFragment extends Fragment {
 
     // The URL to +1.  Must be a valid URL.
-    private final String PLUS_ONE_URL = "http://developer.android.com";
+    private final String PLUS_ONE_URL = "http://www.facebook.com/ringtube";
 
     // The request code must be 0 or greater.
     private static final int PLUS_ONE_REQUEST_CODE = 0;

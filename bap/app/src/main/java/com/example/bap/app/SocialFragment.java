@@ -8,6 +8,9 @@ import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
 
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
+
 /**
  * Created by jcyu5662 on 2014. 5. 2..
  */
@@ -28,6 +31,16 @@ public class SocialFragment extends PreferenceFragment /*implements OnSharedPref
         super.onCreate(savedInstanceState);
 
         addPreferencesFromResource(R.xml.fragment_social);
+
+
+        //Send tracker to Google Analytics.
+        Tracker t = ((BasicAndroidPlatform) getActivity().getApplication()).getTracker(BasicAndroidPlatform.TrackerName.APP_TRACKER);
+
+        //Set Screen Name
+        t.setScreenName("com.example.bap.app.SocialFragment");
+
+        //Send a screen view.
+        t.send(new HitBuilders.AppViewBuilder().build());
 
             /*for(int i=0;i<getPreferenceScreen().getPreferenceCount();i++){
                 initSummary(getPreferenceScreen().getPreference(i));

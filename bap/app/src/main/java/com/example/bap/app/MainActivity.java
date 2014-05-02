@@ -62,14 +62,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
         adView.loadAd(adRequest);
 
 
-        //Send tracker to Google Analytics.
-        Tracker t = ((BasicAndroidPlatform) getApplication()).getTracker(BasicAndroidPlatform.TrackerName.APP_TRACKER);
 
-        //Set Screen Name
-        t.setScreenName("MainActivity");
-
-        //Send a screen view.
-        t.send(new HitBuilders.AppViewBuilder().build());
 
 
         // Set up the action bar.
